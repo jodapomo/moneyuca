@@ -21,14 +21,11 @@
     .navbar-nav {
         .nav-item {
             .nav-link {
-                color: #fff;
-
-                &:hover {
-                    color: rgb(206, 206, 206);
-                }
-
-                &:active {
-                    color: rgb(167, 167, 167);
+                .img-profile {
+                    background: #fff!important;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
         }

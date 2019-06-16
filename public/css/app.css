@@ -18,15 +18,10 @@
   background: #4e73df !important;
 }
 
-.topbar.navbar .navbar-nav .nav-item .nav-link {
-  color: #fff;
-}
-
-.topbar.navbar .navbar-nav .nav-item .nav-link:hover {
-  color: #cecece;
-}
-
-.topbar.navbar .navbar-nav .nav-item .nav-link:active {
-  color: #a7a7a7;
+.topbar.navbar .navbar-nav .nav-item .nav-link .img-profile {
+  background: #fff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 

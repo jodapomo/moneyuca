@@ -14,7 +14,7 @@
 
   <!-- Custom fonts of the template -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link href="{{ asset('css/fontawesome/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/fontawesome/all.min.css" rel="stylesheet') }}" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Styles of the template -->
@@ -28,7 +28,27 @@
 
 </head>
 
-<body id="page-top">
+<body class="bg-gradient-primary">
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
+    <div class="container">
+
+        @yield('content')
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('js/jquery/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Extra scripts -->
+    @yield('extra-js')
+
+</body>
+
+</html>
