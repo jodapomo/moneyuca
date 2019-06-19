@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card o-hidden border-0 shadow-lg my-4">
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
@@ -12,7 +12,14 @@
                 <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
 
                 <div class="col-lg-7">
-                    <div class="p-5">
+                    <div class="pr-5 pl-5 pb-5 pt-3">
+                        <div class="login-logo d-flex align-items-center justify-content-center mb-3">
+                            <div class="login-brand-logo">
+                                <img src="{{ asset('img/logo.png') }}" alt="">
+                            </div>
+                            <div class="brand-text mx-3 text-gray-900">MONEYUCA</div>
+                        </div>
+                        <hr>
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Crea un cuenta!</h1>
                         </div>

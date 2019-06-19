@@ -25,3 +25,40 @@
   align-items: center;
 }
 
+.sidebar-brand-logo {
+  height: 220%;
+}
+
+.sidebar-brand-logo img {
+  height: 100%;
+}
+
+.bg-login-image {
+  background-image: url("/img/login2.jpg");
+}
+
+.bg-register-image {
+  background-image: url("/img/register.png");
+}
+
+.login-logo {
+  height: 70px;
+}
+
+.login-logo .login-brand-logo {
+  height: 100%;
+}
+
+.login-logo .login-brand-logo img {
+  height: 100%;
+}
+
+.login-logo .brand-text {
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  z-index: 1;
+}
+

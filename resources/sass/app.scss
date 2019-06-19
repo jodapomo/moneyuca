@@ -31,3 +31,39 @@
         }
     } 
 }
+
+.sidebar-brand-logo {
+
+    height: 220%;
+
+    img {
+        height: 100%;
+    }
+}
+
+.bg-login-image {
+    background-image: url('/img/login2.jpg');
+}
+
+.bg-register-image {
+    background-image: url('/img/register.png');
+}
+
+.login-logo {
+    height: 70px;
+
+    .login-brand-logo {
+        height: 100%;
+        img {
+            height: 100%;
+        }
+    }
+    .brand-text {
+        font-size: 1rem;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: .05rem;
+        z-index: 1;
+    }
+}
