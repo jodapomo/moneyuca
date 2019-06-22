@@ -15,7 +15,7 @@
     <li class="nav-item {{ ViewHelper::isRouteActive('home') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
         <i class="fas fa-fw fa-home"></i>
-        <span>Home</span></a>
+        <span>Inicio</span></a>
     </li>
 
     @if (Auth::user()->isRole('admin'))   
