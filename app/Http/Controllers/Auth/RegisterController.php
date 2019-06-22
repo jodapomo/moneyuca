@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
+use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,8 +51,10 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => ['required', 'string', 'max:255', 'unique:users,username'],
+            'password' => ['required', 'string', 'confirmed'],
+            'oandaId' => ['string', 'max:255'],
+            'oandaToken' => ['string', 'max:255'],
         ]);
     }
 
@@ -59,14 +62,31 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        $user = new User([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'oandaId' => $data['oandaId'],
+            'oandaToken' => $data['oandaToken'],
         ]);
+        
+        // $user = User::create([
+        //     'name' => $data['name'],
+        //     'username' => $data['username'],
+        //     'password' => Hash::make($data['password']),
+        //     'oandaId' => $data['oandaId'],
+        //     'oandaToken' => $data['oandaToken'],
+        // ]);
+
+        $user->role()->associate(Role::where('name', 'investor')->first());
+
+        $user->save();
+        
+        return $user;
     }
 }

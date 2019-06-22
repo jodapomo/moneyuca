@@ -9,15 +9,7 @@
 @endsection
 
 {{-- Page title --}}
-@if (Auth::user()->isRole('admin'))   
-
-  @section('title', "Admin Home")
-
-@elseif(Auth::user()->isRole('investor'))
-
-  @section('title', "Investor Home")
-
-@endif
+@section('title', "Nuevos Inversionistas")
 
 {{-- Page content --}}
 @section('content')

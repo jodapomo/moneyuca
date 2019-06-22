@@ -26,6 +26,7 @@
                         <form class="user" method="POST" action="{{ route('register') }}">
                             @csrf
 
+                            {{-- name --}}
                             <div class="form-group">
                                 <input
                                     type="text"
@@ -36,7 +37,7 @@
                                     required
                                     autocomplete="name"
                                     autofocus
-                                    placeholder="{{ __('Name') }}"
+                                    placeholder="{{ __('Nombre') }}"
                                 >
 
                                 @error('name')
@@ -46,32 +47,35 @@
                                 @enderror
                             </div>
 
+                            {{-- username --}}
                             <div class="form-group">
                                 <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="form-control form-control-user @error('email') is-invalid @enderror"
-                                    placeholder="{{ __('E-Mail Address') }}"
-                                    value="{{ old('email') }}"
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    class="form-control form-control-user  @error('username') is-invalid @enderror"
+                                    value="{{ old('username') }}"
                                     required
-                                    autocomplete="email"
+                                    autocomplete="username"
+                                    autofocus
+                                    placeholder="{{ __('Nombre de usuario') }}"
                                 >
 
-                                @error('email')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
 
+                            {{-- password --}}
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input
                                         type="password"
                                         id="password"
                                         class="form-control form-control-user @error('password') is-invalid @enderror"
-                                        placeholder="{{ __('Password') }}"
+                                        placeholder="{{ __('Contraseña') }}"
                                         name="password"
                                         required
                                         autocomplete="new-password"
@@ -89,11 +93,49 @@
                                         class="form-control form-control-user"
                                         id="password-confirm"
                                         name="password_confirmation"
-                                        placeholder="{{ __('Confirm Password') }}"
+                                        placeholder="{{ __('Confirmar Contraseña') }}"
                                         required
                                         autocomplete="new-password"
                                     >
                                 </div>
+                            </div>
+
+                            {{-- oandaId --}}
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    id="oandaId"
+                                    name="oandaId"
+                                    class="form-control form-control-user @error('oandaId') is-invalid @enderror"
+                                    placeholder="{{ __('Id Oanda (opcional)') }}"
+                                    value="{{ old('oandaId') }}"
+                                    autocomplete="off"
+                                >
+
+                                @error('oandaId')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            {{-- oandaToken --}}
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    id="oandaToken"
+                                    name="oandaToken"
+                                    class="form-control form-control-user @error('oandaToken') is-invalid @enderror"
+                                    placeholder="{{ __('Token Oanda (opcional)') }}"
+                                    value="{{ old('oandaToken') }}"
+                                    autocomplete="off"
+                                >
+
+                                @error('oandaToken')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-user btn-block">
@@ -103,17 +145,9 @@
                         </form>
 
                         <hr>
-
+ 
                         <div class="text-center">
-                            @if (Route::has('password.request'))
-                                <a class="small" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            @endif
-                        </div>
-
-                        <div class="text-center">
-                            <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
+                            <a href="{{ route('login') }}">Ya tienes una cuenta? Ingresa ya!</a>
                         </div>
 
                     </div>

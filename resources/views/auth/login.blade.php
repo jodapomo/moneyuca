@@ -22,25 +22,25 @@
                                 <div class="brand-text mx-3 text-gray-900">MONEYUCA</div>
                             </div>
                             
-                            {{-- <div class="text-center">
+                            <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Bienvenido de nuevo!</h1>
-                            </div> --}}
-                            {{-- <hr> --}}
+                            </div>
+
                             <form class="user" method="POST" action="{{ route('login') }}">
                                 @csrf
 
                                 <div class="form-group">
                                     <input
-                                        type="email"
-                                        id="email"
-                                        class="form-control form-control-user @error('email') is-invalid @enderror"
-                                        placeholder="{{ __('E-Mail Address') }}"
-                                        name="email" value="{{ old('email') }}"
+                                        type="text"
+                                        id="username"
+                                        class="form-control form-control-user @error('username') is-invalid @enderror"
+                                        placeholder="{{ __('Nombre de usuario') }}"
+                                        name="username" value="{{ old('username') }}"
                                         required
-                                        autocomplete="email"
+                                        autocomplete="username"
                                         autofocus
                                     >
-                                    @error('email')
+                                    @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -55,7 +55,7 @@
                                         name="password"
                                         required
                                         autocomplete="current-password"
-                                        placeholder="{{ __('Password') }}"
+                                        placeholder="{{ __('Contraseña') }}"
                                     >
 
                                     @error('password')
@@ -70,29 +70,20 @@
                                         <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="custom-control-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('Recuérdame') }}
                                         </label>
                                     </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
-                                    {{ __('Login') }}
+                                    {{ __('Entrar') }}
                                 </button>
                             </form>
                             <hr>
                             <div class="text-center">
 
-                                @if (Route::has('password.request'))
-                                    <a class="small" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-
-                            </div>
-                            <div class="text-center">
-
                                 @if (Route::has('register'))
-                                    <a class="small" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 @endif
 
                             </div>

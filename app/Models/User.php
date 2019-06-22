@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'username', 'password', 'oandaId', 'oandaToken',
     ];
 
     /**
@@ -40,12 +40,12 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo(Role::class)->withTimestamps();
+        return $this->belongsTo(Role::class);
     }
 
-    public function is_admin()
+    public function isRole( $role )
     {
-        if ($this->roles()->where('name', 'admin')->first()) {
+        if ($this->role()->where('name', $role)->first()) {
             return true;
         }
         return false;
