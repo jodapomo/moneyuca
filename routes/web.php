@@ -16,8 +16,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/new-investors', 'Admin\NewInvestorsController@index')->name('admin.newInvestors');
+Route::get('new-investors', 'Admin\NewInvestorsController@index')->name('admin.newInvestors');
 
-Route::get('/investors', 'Admin\InvestorsController@index')->name('admin.investors');
+Route::get('investors', 'Admin\InvestorsController@index')->name('admin.investors');
 
-Route::get('/configurations', 'Admin\ConfigurationsController@index')->name('admin.configurations');
+Route::get('configurations', 'Admin\ConfigurationsController@index')->name('admin.configurations');
+
+Route::put('configurations', 'Admin\ConfigurationsController@update')->name('admin.configuration.update');
