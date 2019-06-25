@@ -10,7 +10,7 @@
 
             @include('layout.topbar')
 
-            <div class="container-fluid">
+            <div class="container-fluid animated--fade-in">
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-4 text-gray-800">@yield('title')</h1>

@@ -14,7 +14,7 @@
 {{-- Page content --}}
 @section('content')
 
-  <form method="POST" action="{{ route('admin.configuration.update') }}">
+  <form novalidate method="POST" action="{{ route('admin.configuration.update') }}">
     @method('PUT')  
     @csrf
 
@@ -26,14 +26,25 @@
       <div class="card-body">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias at unde dolore ipsam fugit, vero inventore animi tenetur minima consectetur dolorum quas aperiam exercitationem quos, id rem aliquid expedita error.</p>
         <div class="form-group">
-          <input
-            type="number"
-            class="form-control"
-            name="low_capital"
-            id="low_capital"
-            placeholder="Capital bajo"
-            value="{{ old('low_capital', $configuration->low_capital) }}"
-          >
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input
+              type="number"
+              class="form-control @error('low_capital') is-invalid @enderror"
+              name="low_capital"
+              id="low_capital"
+              placeholder="Capital bajo"
+              value="{{ $configuration->low_capital }}"
+            >
+            @error('low_capital')
+              <div  class="invalid-feedback" role="alert">
+                {{ $message }}
+              </div >
+            @enderror
+          </div>
         </div>
       </div>
     </div>
@@ -48,35 +59,65 @@
 
         <div class="form-group">
           <label for="take_proffit_limit_1">Límite 1</label>
-          <input
-            type="number"
-            class="form-control"
-            name="take_proffit_limit_1"
-            id="take_proffit_limit_1"
-            value="{{ old('take_proffit_limit_1', $configuration->take_proffit_limit_1) }}"
-          >
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input
+                type="number"
+                class="form-control @error('take_proffit_limit_1') is-invalid @enderror"
+                name="take_proffit_limit_1"
+                id="take_proffit_limit_1"
+                value="{{ $configuration->take_proffit_limit_1 }}"
+              >
+              @error('take_proffit_limit_1')
+                <div  class="invalid-feedback" role="alert">
+                  {{ $message }}
+                </div >
+              @enderror
+            </div>
         </div>
 
         <div class="form-group">
           <label for="take_proffit_limit_2">Límite 2</label>
-          <input
-            type="number"
-            class="form-control"
-            name="take_proffit_limit_2"
-            id="take_proffit_limit_2"
-            value="{{ old('take_proffit_limit_2', $configuration->take_proffit_limit_2) }}"
-          >
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input
+                type="number"
+                class="form-control @error('take_proffit_limit_2') is-invalid @enderror"
+                name="take_proffit_limit_2"
+                id="take_proffit_limit_2"
+                value="{{ $configuration->take_proffit_limit_2 }}"
+              >
+              @error('take_proffit_limit_2')
+                <div  class="invalid-feedback" role="alert">
+                  {{ $message }}
+                </div >
+              @enderror
+            </div>
         </div>
 
         <div class="form-group">
           <label for="take_proffit_limit_3">Límite 3</label>
-          <input
-            type="number"
-            class="form-control"
-            name="take_proffit_limit_3"
-            id="take_proffit_limit_3"
-            value="{{ old('take_proffit_limit_3', $configuration->take_proffit_limit_3) }}"
-          >
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input
+                type="number"
+                class="form-control @error('take_proffit_limit_3') is-invalid @enderror"
+                name="take_proffit_limit_3"
+                id="take_proffit_limit_3"
+                value="{{ $configuration->take_proffit_limit_3 }}"
+              >
+              @error('take_proffit_limit_3')
+                <div  class="invalid-feedback" role="alert">
+                  {{ $message }}
+                </div >
+              @enderror
+            </div>
         </div>
       </div>
     </div>
@@ -89,14 +130,24 @@
       <div class="card-body">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias at unde dolore ipsam fugit, vero inventore animi tenetur minima consectetur dolorum quas aperiam exercitationem quos, id rem aliquid expedita error.</p>
         <div class="form-group">
-          <input
-            type="number"
-            class="form-control"
-            name="risk"
-            id="risk"
-            placeholder="Riesgo"
-            value="{{ old('risk', $configuration->risk) }}"
-          >
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input
+                type="number"
+                class="form-control @error('risk') is-invalid @enderror"
+                name="risk"
+                id="risk"
+                placeholder="Riesgo"
+                value="{{ $configuration->risk }}"
+              >
+              @error('risk')
+                <div  class="invalid-feedback" role="alert">
+                  {{ $message }}
+                </div >
+              @enderror
+            </div>
         </div>
       </div>
     </div>
@@ -104,12 +155,12 @@
 
     <div class="row d-flex justify-content-center">
 
-      <button style="margin-right:10px;" class="btn btn-secondary btn-icon-split btn-lg mb-3">
+      <a href="{{ route('admin.configurations') }}" style="margin-right:10px;" class="btn btn-secondary btn-icon-split btn-lg mb-3">
         <span class="icon text-white-50">
           <i class="fas fa-undo-alt"></i>
         </span>
         <span class="text">Restaurar</span>
-      </button>
+      </a>
 
       <button type="submit" style="margin-left:10px;" class="btn btn-primary btn-icon-split btn-lg mb-3">
         <span class="icon text-white-50">
