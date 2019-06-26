@@ -28,4 +28,4 @@ Route::get('/', 'HomeController@index')->name('home');
     Route::get('configurations', 'Admin\ConfigurationsController@index')->name('admin.configurations');
 
         // API
-        Route::put('configurations', 'Admin\ConfigurationsController@update')->name('admin.configuration.update');
+        Route::put('configuration', 'Admin\ConfigurationsController@update')->name('admin.configuration.update');
