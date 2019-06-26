@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class InvestorsController extends Controller
 {
@@ -20,7 +21,9 @@ class InvestorsController extends Controller
      */
     public function index()
     {
-        return view('admin.investors');
+        $investors = User::getInvestors();
+
+        return view('admin.investors', compact('investors'));
     }
 
     /**

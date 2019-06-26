@@ -50,4 +50,11 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public static function getInvestors()
+    {
+        $investorRoleId  = Role::where('name', 'investor')->first()->id;
+
+        return static::where('role_id', $investorRoleId)->get();
+    }
 }

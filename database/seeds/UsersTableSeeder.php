@@ -35,5 +35,7 @@ class UsersTableSeeder extends Seeder
         $investorUser->oandaId = 'oandaId';
 
         $investorUser->save();
+
+        factory(User::class, 49)->create();
     }
 }
