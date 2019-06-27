@@ -46,27 +46,29 @@ class User extends Authenticatable
 
     public function isRole( $role )
     {
-        if ($this->role()->where('name', $role)->first()) {
+        if ( $this->role->name == $role ) {
             return true;
         }
+
         return false;
+    }
+
+    public function isInvestorValidated()
+    {
+        # code...
     }
 
     public static function getInvestors()
     {
-        $investorRoleId  = Role::where('name', 'investor')->first()->id;
+        $investorRole  = Role::where('name', 'investor')->first();
 
-        return static::where('role_id', $investorRoleId)->get();
+        $investors = $investorRole->users;
+
+        return $investors;
     }
 
     public function resume()
     {
-        return $this->hasOne(Resume::class)->withDefault([
-            'balance' => 0,
-            'open_operations' => 0,
-            'profits' => 0,
-            'margin_available' => 0,
-            'current_profits' => 0,
-        ]);
+        return $this->hasOne(Resume::class);
     }
 }
