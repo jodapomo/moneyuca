@@ -8,7 +8,7 @@ class Configuration extends Model
 {
 
     protected $fillable = [
-        'low_capital', 'take_proffit_limit_1', 'take_proffit_limit_2', 'take_proffit_limit_3', 'risk',
+        'low_capital', 'take_profit_limit_1', 'take_profit_limit_2', 'take_profit_limit_3', 'risk',
     ];
 
 

@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    {{-- takeProffitLimit --}}
+    {{-- takeProfitLimit --}}
     <div class="card shadow mb-4">
       <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Límite Tomar Ganacias</h6>
@@ -58,19 +58,19 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias at unde dolore ipsam fugit, vero inventore animi tenetur minima consectetur dolorum quas aperiam exercitationem quos, id rem aliquid expedita error.</p>
 
         <div class="form-group">
-          <label for="take_proffit_limit_1">Límite 1</label>
+          <label for="take_profit_limit_1">Límite 1</label>
           <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
               <input
                 type="number"
-                class="form-control @error('take_proffit_limit_1') is-invalid @enderror"
-                name="take_proffit_limit_1"
-                id="take_proffit_limit_1"
-                value="{{ $configuration->take_proffit_limit_1 }}"
+                class="form-control @error('take_profit_limit_1') is-invalid @enderror"
+                name="take_profit_limit_1"
+                id="take_profit_limit_1"
+                value="{{ $configuration->take_profit_limit_1 }}"
               >
-              @error('take_proffit_limit_1')
+              @error('take_profit_limit_1')
                 <div  class="invalid-feedback" role="alert">
                   {{ $message }}
                 </div >
@@ -79,19 +79,19 @@
         </div>
 
         <div class="form-group">
-          <label for="take_proffit_limit_2">Límite 2</label>
+          <label for="take_profit_limit_2">Límite 2</label>
           <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
               <input
                 type="number"
-                class="form-control @error('take_proffit_limit_2') is-invalid @enderror"
-                name="take_proffit_limit_2"
-                id="take_proffit_limit_2"
-                value="{{ $configuration->take_proffit_limit_2 }}"
+                class="form-control @error('take_profit_limit_2') is-invalid @enderror"
+                name="take_profit_limit_2"
+                id="take_profit_limit_2"
+                value="{{ $configuration->take_profit_limit_2 }}"
               >
-              @error('take_proffit_limit_2')
+              @error('take_profit_limit_2')
                 <div  class="invalid-feedback" role="alert">
                   {{ $message }}
                 </div >
@@ -100,19 +100,19 @@
         </div>
 
         <div class="form-group">
-          <label for="take_proffit_limit_3">Límite 3</label>
+          <label for="take_profit_limit_3">Límite 3</label>
           <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
               <input
                 type="number"
-                class="form-control @error('take_proffit_limit_3') is-invalid @enderror"
-                name="take_proffit_limit_3"
-                id="take_proffit_limit_3"
-                value="{{ $configuration->take_proffit_limit_3 }}"
+                class="form-control @error('take_profit_limit_3') is-invalid @enderror"
+                name="take_profit_limit_3"
+                id="take_profit_limit_3"
+                value="{{ $configuration->take_profit_limit_3 }}"
               >
-              @error('take_proffit_limit_3')
+              @error('take_profit_limit_3')
                 <div  class="invalid-feedback" role="alert">
                   {{ $message }}
                 </div >

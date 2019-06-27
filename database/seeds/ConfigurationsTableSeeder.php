@@ -14,9 +14,9 @@ class ConfigurationsTableSeeder extends Seeder
     {
         Configuration::create([
             'low_capital' => 0,
-            'take_proffit_limit_1' => 0,
-            'take_proffit_limit_2' => 0,
-            'take_proffit_limit_3' => 0,
+            'take_profit_limit_1' => 0,
+            'take_profit_limit_2' => 0,
+            'take_profit_limit_3' => 0,
             'risk' => 0,
         ]);
     }

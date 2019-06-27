@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use App\Models\Role;
+use App\Models\Resume;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,8 @@ $factory->define(User::class, function (Faker $faker) {
         'oandaToken' => Str::random(10),
         'oandaId' => Str::random(10),
     ];
+});
+
+$factory->afterCreating(User::class, function ($user, $faker) {
+    $user->resume()->save(factory(Resume::class)->make());
 });

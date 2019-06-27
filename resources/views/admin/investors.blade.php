@@ -82,8 +82,8 @@
                   <td>{{ $investor->id }}</td>
                   <td>{{ $investor->name }}</td>
                   <td>{{ $investor->username }}</td>
-                  <td>0</td>
-                  <td>0</td>
+                  <td>{{ $investor->resume->balance }}</td>
+                  <td>{{ $investor->resume->margin_available }}</td>
                   <td>{{ $investor->created_at }}</td>
                 </tr>
               @endforeach

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Role;
+use App\Models\Resume;
 
 class User extends Authenticatable
 {
@@ -56,5 +57,10 @@ class User extends Authenticatable
         $investorRoleId  = Role::where('name', 'investor')->first()->id;
 
         return static::where('role_id', $investorRoleId)->get();
+    }
+
+    public function resume()
+    {
+        return $this->hasOne(Resume::class);
     }
 }
