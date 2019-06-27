@@ -61,6 +61,12 @@ class User extends Authenticatable
 
     public function resume()
     {
-        return $this->hasOne(Resume::class);
+        return $this->hasOne(Resume::class)->withDefault([
+            'balance' => 0,
+            'open_operations' => 0,
+            'profits' => 0,
+            'margin_available' => 0,
+            'current_profits' => 0,
+        ]);
     }
 }

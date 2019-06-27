@@ -23,6 +23,8 @@ class InvestorsController extends Controller
     {
         $investors = User::getInvestors();
 
+        // dd($investors[49]->resume);
+
         return view('admin.investors', compact('investors'));
     }
 

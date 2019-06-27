@@ -75,17 +75,17 @@ class RegisterController extends Controller
             'oandaToken' => $data['oandaToken'],
         ]);
         
-        // $user = User::create([
-        //     'name' => $data['name'],
-        //     'username' => $data['username'],
-        //     'password' => Hash::make($data['password']),
-        //     'oandaId' => $data['oandaId'],
-        //     'oandaToken' => $data['oandaToken'],
-        // ]);
-
         $user->role()->associate(Role::where('name', 'investor')->first());
 
         $user->save();
+
+        $user->resume()->create([
+            'balance' => 0,
+            'open_operations' => 0,
+            'profits' => 0,
+            'margin_available' => 0,
+            'current_profits' => 0,
+        ]);
         
         return $user;
     }

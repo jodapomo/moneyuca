@@ -7,6 +7,12 @@ use App\Models\User;
 
 class Resume extends Model
 {
+
+    protected $fillable = [
+        'balance', 'open_operations', 'profits', 'margin_available', 'current_profits',
+    ];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
