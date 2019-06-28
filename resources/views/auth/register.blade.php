@@ -21,7 +21,7 @@
                         </div>
                         <hr>
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Crea un cuenta!</h1>
+                            <h1 class="h4 text-gray-900 mb-4">¡Crea un cuenta!</h1>
                         </div>
                         <form class="user" method="POST" action="{{ route('register') }}">
                             @csrf

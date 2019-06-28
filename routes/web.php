@@ -14,6 +14,12 @@
 
 Auth::routes();
 
+Route::get('/wait', function () {
+
+    return view('auth.wait');
+
+})->name('wait')->middleware('auth');
+
 Route::get('/', 'HomeController@index')->name('home');
 
 // ADMIN

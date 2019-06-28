@@ -23,7 +23,7 @@
                             </div>
                             
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Bienvenido de nuevo!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">¡Bienvenido de nuevo!</h1>
                             </div>
 
                             <form class="user" method="POST" action="{{ route('login') }}">

@@ -15,8 +15,15 @@ class CheckRole
      */
     public function handle($request, Closure $next, $role)
     {
+        if ( ( $role == 'all' ) and ( $request->user()->isValidated() ) ) {
+            return $next($request);
+        }
 
-        if ( !$request->user()->isRole($role) ) {
+        if ( !$request->user()->isValidated() ) {
+            return redirect()->route('wait');
+        }
+
+        if ( !( $request->user()->isRole($role) ) ) {
             return redirect('/');
         }
 

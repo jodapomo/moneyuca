@@ -53,16 +53,16 @@ class User extends Authenticatable
         return false;
     }
 
-    public function isInvestorValidated()
+    public function isValidated()
     {
-        # code...
+        return ( $this->isRole('investor') and  $this->validated ) or $this->isRole('admin');  
     }
 
     public static function getInvestors()
     {
         $investorRole  = Role::where('name', 'investor')->first();
 
-        $investors = $investorRole->users;
+        $investors = $investorRole->users()->where('validated', True)->get();
 
         return $investors;
     }

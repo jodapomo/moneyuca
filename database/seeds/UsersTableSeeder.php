@@ -41,6 +41,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'user',
             'password' => bcrypt('123'),
             'role_id' => $investorRole->id,
+            'validated' => True,
         ]);
 
         factory(User::class, 49)->create();
