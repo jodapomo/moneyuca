@@ -23,9 +23,9 @@ class ConfigurationsController extends Controller
 
     public function update(UpdateConfigurations $request)
     {
-        $configuration =  Configuration::get();
-
         $data = $request->validated();
+
+        $configuration =  Configuration::get();
 
         $configuration->update($data);
 
