@@ -25,17 +25,7 @@ class UsersTableSeeder extends Seeder
 
         $adminUser->save();
 
-
-        // $investorUser = new User();
-        // $investorUser->name = 'User';
-        // $investorUser->username = 'user';
-        // $investorUser->password = bcrypt('123');
-        // $investorUser->role()->associate($investorRole);
-        // $investorUser->oandaToken = 'oandaToken';
-        // $investorUser->oandaId = 'oandaId';
-
-        // $investorUser->save();
-
+        
         factory(User::class)->create([
             'name' => 'User',
             'username' => 'user',

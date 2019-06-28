@@ -26,6 +26,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
     // NEW INVESTORS
     Route::get('new-investors', 'Admin\NewInvestorsController@index')->name('admin.newInvestors');
+    Route::put('new-investors/{investor}', 'Admin\NewInvestorsController@validateInvestor')
+        ->where('investor', '[0-9]+')
+        ->name('admin.validateInvestor');
 
     // INVESTORS
     Route::get('investors', 'Admin\InvestorsController@index')->name('admin.investors');

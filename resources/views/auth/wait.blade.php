@@ -1,6 +1,6 @@
 @extends('auth.layout')
 
-@section('title', 'Vuelve pronto')
+@section('title', 'Ya casi esta')
 
 @section('content')
 
@@ -23,7 +23,7 @@
                             </div>
                             
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">!Espera un poco!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">!Ya casi esta!</h1>
                             </div>
                             <hr>
                             <div class="text-center">

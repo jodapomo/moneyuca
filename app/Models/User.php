@@ -38,11 +38,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
 
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
+
 
     public function isRole( $role )
     {
@@ -53,10 +55,12 @@ class User extends Authenticatable
         return false;
     }
 
+
     public function isValidated()
     {
         return ( $this->isRole('investor') and  $this->validated ) or $this->isRole('admin');  
     }
+
 
     public static function getInvestors()
     {
@@ -66,6 +70,17 @@ class User extends Authenticatable
 
         return $investors;
     }
+
+
+    public static function getNewInvestors()
+    {
+        $investorRole  = Role::where('name', 'investor')->first();
+
+        $investors = $investorRole->users()->where('validated', False)->get();
+
+        return $investors;
+    }
+
 
     public function resume()
     {
