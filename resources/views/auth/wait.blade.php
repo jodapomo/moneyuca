@@ -12,7 +12,7 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div style="background-image: url('/img/wait.jpg');" class="col-lg-6 d-none d-lg-block"></div>
+                    <div style="background-image: url({{ asset('img/wait.jpg') }});" class="col-lg-6 d-none d-lg-block"></div>
                     <div class="col-lg-6">
                         <div class="p-5">
                             <div class="login-logo d-flex align-items-center justify-content-center mb-3">
@@ -32,16 +32,12 @@
                             <hr>
                             @if (Route::has('register'))
                                  <div class="text-center">
-                                    {{-- <a href="{{ route('login') }}">Ingresa ya!</a>
-                                    o
-                                    <a href="{{ route('register') }}">{{ __('Crea una cuenta') }}</a> --}}
-
                                     <a
                                         class=""
                                         href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                     >
-                                        {{ __('Salir') }}
+                                        {{ __('Volver') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
