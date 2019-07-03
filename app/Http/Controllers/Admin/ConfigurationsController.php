@@ -18,7 +18,7 @@ class ConfigurationsController extends Controller
     {
         $configuration =  Configuration::get();
 
-        return view('admin.configurations', compact('configuration'));
+        return view('admin.configurations', compact(['configuration']));
     }
 
     public function update(UpdateConfigurations $request)
@@ -29,7 +29,7 @@ class ConfigurationsController extends Controller
 
         $configuration->update($data);
 
-        return redirect()->route('admin.configurations');
+        return redirect()->route('admin.configurations')->with('success', True);
     }
 
 }
