@@ -49,10 +49,10 @@
   <!-- DataTales -->
   <div class="card shadow mb-4">
     <div class="card-body">
-      @empty ( $investors )   
+      @if ( $investors->isEmpty() )   
         <div class="alert alert-info" role="alert">
           No se encontraron inversionistas.
-        </div>  
+        </div> 
       @else
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -90,7 +90,7 @@
             </tbody>
           </table>
         </div>
-      @endempty
+      @endif
     </div>
   </div>
 

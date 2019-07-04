@@ -49,9 +49,9 @@
   <!-- DataTales -->
   <div class="card shadow mb-4">
     <div class="card-body">
-      @empty ( $newInvestors )   
+      @if ( $newInvestors->isEmpty() )   
         <div class="alert alert-info" role="alert">
-          No se encontraron nuevos inversionistas.
+          No se encontraron nuevos inversionistas para validar.
         </div>  
       @else
         <div class="table-responsive">
@@ -97,7 +97,7 @@
             </tbody>
           </table>
         </div>
-      @endempty
+      @endif
     </div>
   </div>
 
