@@ -26,14 +26,14 @@ class UsersTableSeeder extends Seeder
         $adminUser->save();
 
         
-        // factory(User::class)->create([
-        //     'name' => 'User',
-        //     'username' => 'user',
-        //     'password' => bcrypt('123'),
-        //     'role_id' => $investorRole->id,
-        //     'validated' => True,
-        // ]);
+        factory(User::class)->create([
+            'name' => 'User',
+            'username' => 'user',
+            'password' => bcrypt('123'),
+            'role_id' => $investorRole->id,
+            'validated' => True,
+        ]);
 
-        // factory(User::class, 49)->create();
+        factory(User::class, 49)->create();
     }
 }

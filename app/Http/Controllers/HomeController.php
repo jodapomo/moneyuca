@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Investor\InvestorHomeController;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        if ( Auth::user()->isRole('admin') ) {
+
+            return AdminHomeController::index();
+
+        } else if ( Auth::user()->isRole('investor') ) {
+
+            return InvestorHomeController::index();
+
+        }
+
     }
+
 }

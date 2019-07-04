@@ -54,3 +54,19 @@
   z-index: 1;
 }
 
+.card-link .card {
+  transition: all 200ms ease-in-out;
+}
+
+.card-link .card-link-icon {
+  transition: all 200ms ease-in-out;
+}
+
+.card-link:hover .card {
+  box-shadow: 0 0.15rem 0.75rem 0 rgba(37, 38, 44, 0.24) !important;
+}
+
+.card-link:hover .card-link-icon {
+  color: #b7b9cc !important;
+}
+

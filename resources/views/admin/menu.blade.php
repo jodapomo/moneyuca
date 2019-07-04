@@ -15,7 +15,7 @@
 
 <li class="nav-item {{ ViewHelper::isRouteActive('admin.investors') ? 'active' : '' }}">
     <a class="nav-link"  href="{{ route('admin.investors') }}">
-        <i class="fas fa-fw fa-dollar-sign"></i>
+        <i class="fas fa-fw fa-users"></i>
         <span>Inversionistas</span>
     </a>
 </li>

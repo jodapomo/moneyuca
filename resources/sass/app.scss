@@ -59,3 +59,26 @@
         z-index: 1;
     }
 }
+
+.card-link {
+
+    .card {
+        transition: all 200ms ease-in-out;
+    }
+
+    .card-link-icon {
+        transition: all 200ms ease-in-out;
+    }
+    
+    &:hover {
+        
+        .card {
+            box-shadow: 0 .15rem 0.75rem 0 rgba(37, 38, 44, 0.24)!important
+        }
+        
+        .card-link-icon {
+            color: #b7b9cc!important;
+        }
+    }
+}
+
