@@ -59,7 +59,7 @@
             <thead>
               <tr>
                 <th>Id.</th>
-                <th>Name</th>
+                <th>Nombre</th>
                 <th>Nombre de usuario</th>
                 <th>Fecha Creación</th>
                 <th>Validar</th>
@@ -68,7 +68,7 @@
             <tfoot>
               <tr>
                 <th>Id.</th>
-                <th>Name</th>
+                <th>Nombe</th>
                 <th>Nombre de usuario</th>
                 <th>Fecha Creación</th>
                 <th>Validar</th>

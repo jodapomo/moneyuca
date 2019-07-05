@@ -59,7 +59,7 @@
             <thead>
               <tr>
                 <th>Id.</th>
-                <th>Name</th>
+                <th>Nombre</th>
                 <th>Nombre de usuario</th>
                 <th>Balance</th>
                 <th>Margen Disponible</th>
@@ -69,7 +69,7 @@
             <tfoot>
               <tr>
                 <th>Id.</th>
-                <th>Name</th>
+                <th>Nombre</th>
                 <th>Nombre de usuario</th>
                 <th>Balance</th>
                 <th>Margen Disponible</th>
