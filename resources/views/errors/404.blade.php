@@ -40,7 +40,7 @@
           <div class="text-center" style="height: 100vh;">
               <div class="error mx-auto" data-text="404">404</div>
               <p class="lead text-gray-800">Página no encontrada</p>
-              <a href="/">&larr; Volver al inicio</a>
+              <a href="{{ url()->previous() }}">&larr; Volver</a>
           </div>   
         </div>
       </div>
