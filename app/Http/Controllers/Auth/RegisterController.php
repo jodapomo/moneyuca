@@ -53,8 +53,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:users,username'],
             'password' => ['required', 'string', 'confirmed'],
-            'oandaId' => ['string', 'max:255'],
-            'oandaToken' => ['string', 'max:255'],
+            'oandaId' => ['nullable','string', 'max:255'],
+            'oandaToken' => ['nullable','string', 'max:255'],
+        ],[
+            'username.unique' => 'El nombre de usuario ya esta en uso.',
+            'password.confirmed' => 'La confirmación de la contraseña no coincide.',
         ]);
     }
 

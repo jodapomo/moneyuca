@@ -1,6 +1,6 @@
 @extends('auth.layout')
 
-@section('title', 'Register')
+@section('title', 'Registrarse')
 
 @section('content')
 
@@ -139,7 +139,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-user btn-block">
-                                    {{ __('Register') }}
+                                    {{ __('Registrarse') }}
                             </button>
 
                         </form>

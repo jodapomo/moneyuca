@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Nombre de ususario o contraseña incorrectos.',
+    'failed' => 'Nombre de usuario o contraseña incorrectos.',
     'throttle' => 'Muchos intentos de inicio de sesión. Vuelva a intentar en :seconds segundos.',
 
 ];
