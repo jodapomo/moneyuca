@@ -7,10 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Resume::class, function (Faker $faker) {
     return [
-        'balance' => $faker->randomFloat(),
+        'balance' => $faker->randomFloat(2,0, 9999999),
         'open_operations' => $faker->randomDigitNotNull(),
-        'profits' => $faker->randomFloat(),
-        'margin_available' => $faker->randomFloat(),
-        'current_profits' => $faker->randomFloat(),
+        'profits' => $faker->randomFloat(2,0, 9999),
+        'margin_available' => $faker->randomFloat(2,0, 999),
+        'current_profits' => $faker->randomFloat(2,0, 999),
     ];
 });

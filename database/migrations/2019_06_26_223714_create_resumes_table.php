@@ -16,11 +16,11 @@ class CreateResumesTable extends Migration
         Schema::create('resumes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->double('balance', 15, 8);
+            $table->double('balance', 20, 8);
             $table->integer('open_operations');
-            $table->double('profits', 15, 8);
-            $table->double('margin_available', 15, 8);
-            $table->double('current_profits', 15, 8);
+            $table->double('profits', 20, 8);
+            $table->double('margin_available', 20, 8);
+            $table->double('current_profits', 20, 8);
             $table->timestamps();
         });
     }
