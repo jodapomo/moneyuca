@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
@@ -27,7 +26,7 @@ class NewInvestorsController extends Controller
 
         $investor->save();
 
-        return redirect()->route('admin.newInvestors');
+        return redirect()->route('admin.newInvestors')->with('success', 'Inversionista ' . $investor->name . ' validado!');
     }
 
 }
