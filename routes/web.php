@@ -38,3 +38,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
         // API
         Route::put('configurations', 'Admin\ConfigurationsController@update')->name('admin.configuration.update');
+
+// INVESTOR
+
+    //RESUME
+    Route::get('resume','Investor\ResumeController@index')->name('investor.resume');
+    Route::put('resume','Investor\ResumeController@update')->name('investor.resume.update');
