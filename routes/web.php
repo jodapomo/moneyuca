@@ -43,4 +43,22 @@ Route::get('/', 'HomeController@index')->name('home');
 
     //RESUME
     Route::get('resume','Investor\ResumeController@index')->name('investor.resume');
-    Route::put('resume','Investor\ResumeController@update')->name('investor.resume.update');
+
+    
+    //ACTIVE ORDERS
+    Route::get('activeOrders','Investor\ActiveOrdersController@test')->name('investor.activeOrders');
+
+    //CREATE ORDER
+    Route::get('createOrder','Investor\CreateOrderController@index')->name('investor.createOrder');
+
+    //CREATE MODIFIER
+    Route::get('createModifier','Investor\CreateModifierController@index')->name('investor.createModifier');
+
+    //NOT INTERPRETED MESSAGE
+    Route::get('notInterpretedMessage','Investor\NotInterpretedMessage@index')->name('investor.notInterpretedMessage');
+
+    //CONFIGURATION
+    Route::get('configurations','Investor\ConfigurationsController@index')->name('investor.configurations');
+
+
+    
