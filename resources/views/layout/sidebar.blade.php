@@ -18,7 +18,7 @@
         <span>Inicio</span></a>
     </li>
 
-    @if (Auth::user()->isRole('admin'))   
+    @if (Auth::user()->isRole('admin'))
 
         @include('admin.menu')
 

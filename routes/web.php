@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
@@ -22,19 +22,28 @@ Route::get('/wait', function () {
 
 Route::get('/', 'HomeController@index')->name('home');
 
+// INVESTOR
+Route::get('account', 'Investor\AccountController@edit')->name('investor.manageAccount');
+Route::put('account/name', 'Investor\AccountController@updateName')->name('investor.updateName');
+Route::put('account/password', 'Investor\AccountController@updatePassword')->name('investor.updatePassword');
+Route::put('account/oandaId', 'Investor\AccountController@updateOandaId')->name('investor.updateOandaId');
+Route::put('account/oandaToken', 'Investor\AccountController@updateOandaToken')->name('investor.updateOandaToken');
+
+
+
 // ADMIN
 
-    // NEW INVESTORS
-    Route::get('new-investors', 'Admin\NewInvestorsController@index')->name('admin.newInvestors');
-    Route::put('new-investors/{investor}', 'Admin\NewInvestorsController@validateInvestor')
-        ->where('investor', '[0-9]+')
-        ->name('admin.validateInvestor');
+// NEW INVESTORS
+Route::get('new-investors', 'Admin\NewInvestorsController@index')->name('admin.newInvestors');
+Route::put('new-investors/{investor}', 'Admin\NewInvestorsController@validateInvestor')
+    ->where('investor', '[0-9]+')
+    ->name('admin.validateInvestor');
 
-    // INVESTORS
-    Route::get('investors', 'Admin\InvestorsController@index')->name('admin.investors');
+// INVESTORS
+Route::get('investors', 'Admin\InvestorsController@index')->name('admin.investors');
 
-    // CONFIGURATIONS
-    Route::get('configurations', 'Admin\ConfigurationsController@index')->name('admin.configurations');
+// CONFIGURATIONS
+Route::get('configurations', 'Admin\ConfigurationsController@index')->name('admin.configurations');
 
-        // API
-        Route::put('configurations', 'Admin\ConfigurationsController@update')->name('admin.configuration.update');
+// API
+Route::put('configurations', 'Admin\ConfigurationsController@update')->name('admin.configuration.update');
