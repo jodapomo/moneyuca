@@ -23,11 +23,87 @@ Route::get('/wait', function () {
 Route::get('/', 'HomeController@index')->name('home');
 
 // INVESTOR
+
+// MANAGE ACCOUNT
 Route::get('account', 'Investor\AccountController@edit')->name('investor.manageAccount');
 Route::put('account/name', 'Investor\AccountController@updateName')->name('investor.updateName');
 Route::put('account/password', 'Investor\AccountController@updatePassword')->name('investor.updatePassword');
 Route::put('account/oandaId', 'Investor\AccountController@updateOandaId')->name('investor.updateOandaId');
 Route::put('account/oandaToken', 'Investor\AccountController@updateOandaToken')->name('investor.updateOandaToken');
+
+
+// OPEN OPERATIONS
+Route::get('open-operations', 'Investor\OpenOperationsController@index')->name('investor.openOperations');
+
+
+
+
+
+
+
+
+
+
+
+
+
+// CREATE OPERATION
+Route::get('create-operation', 'Investor\CreateOperationController@index')->name('investor.createOperation');
+
+
+
+
+
+
+
+
+
+
+
+
+
+// UNINTERPRETED SIGNALS
+Route::get('uninterpreted-signals', 'Investor\UninterpretedSignalsController@index')->name('investor.uninterpretedSignals');
+
+
+
+
+
+
+
+
+
+
+
+
+
+// CREATE MODIFIER
+Route::get('create-modifier', 'Investor\CreateModifierController@index')->name('investor.createModifier');
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MODIFY OPERATION
+Route::get('modify-operation', 'Investor\ModifyOperationController@index')->name('investor.modifyOperation');
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -46,4 +122,4 @@ Route::get('investors', 'Admin\InvestorsController@index')->name('admin.investor
 Route::get('configurations', 'Admin\ConfigurationsController@index')->name('admin.configurations');
 
 // API
-Route::put('configurations', 'Admin\ConfigurationsController@update')->name('admin.configuration.update');
+Route::put('configurations', 'Admin\ConfigurationsController@update')->name('admin.configurations.update');

@@ -20,7 +20,7 @@
 {{-- Page content --}}
 @section('content')
 
-  <form novalidate method="POST" action="{{ route('admin.configuration.update') }}">
+  <form novalidate method="POST" action="{{ route('admin.configurations.update') }}">
     @method('PUT')  
     @csrf
 
