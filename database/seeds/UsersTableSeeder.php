@@ -29,6 +29,8 @@ class UsersTableSeeder extends Seeder
         factory(User::class)->create([
             'name' => 'User',
             'username' => 'user',
+            'oandaToken' => '92109d0aed0fd205d28ae2ef34a95372-4ea6cde58d199b6ed093856e346a1edc',
+            'oandaId' => '101-011-11865205-001',
             'password' => bcrypt('123'),
             'role_id' => $investorRole->id,
             'validated' => True,
