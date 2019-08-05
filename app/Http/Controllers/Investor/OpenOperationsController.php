@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Investor;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Oanda\ListOpenOperations;
+use Illuminate\Support\Facades\Auth;
 
 class OpenOperationsController extends Controller
 {
@@ -12,8 +14,17 @@ class OpenOperationsController extends Controller
         $this->middleware(['auth', 'role:investor']);
     }
 
+    private function oandaRequest($oandaToken, $oandaId) 
+    {
+        $result = ListOpenOperations::index($oandaToken,$oandaId);
+        return $result;
+    }
     public function index()
     {
-        return view('investor.openOperations');
+        $user = Auth::user();
+        $oandaId = $user->oandaId;
+        $oandaToken = $user->oandaToken;
+        ListOpenOperations::index($oandaToken,$oandaId);
+        //return view('investor.openOperations');
     }
 }
