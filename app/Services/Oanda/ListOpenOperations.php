@@ -17,11 +17,13 @@ class ListOpenOperations
             'GET',
             $url,
             ['headers' => [
-                'Authorization' => 'Bearer '.$oandaToken]],
+                'Authorization' => ['Bearer '.$oandaToken]]
+            ],
             ['json' => true]
         );
 
         $response = $request->getBody();
+        echo $response;
         dd($response);
     }
 
