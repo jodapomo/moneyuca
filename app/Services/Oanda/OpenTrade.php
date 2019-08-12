@@ -12,14 +12,14 @@ class OpenTrade
     {
         print $oandaId;
         $body = 
-            ["order"=>[
-            "instrument" => $instrument,
-            "units" => $units,
-            "type" => $type,
-            "price" => $price,
-            "timeInForce" => "FOK",
-            "takeProfitOnFill" => ["price" => $takeProfit],
-            "stopLossOnFill" => ["price" => $stopLoss]
+            ['order'=>[
+            'instrument' => $instrument,
+            'units' => $units,
+            'type' => $type,
+            'price' => $price,
+            'timeInForce' => 'FOK',
+            'takeProfitOnFill' => ['price' => $takeProfit],
+            'stopLossOnFill' => ['price' => $stopLoss]
             ]];
         //$body = json_encode($body);
         $headers = [
