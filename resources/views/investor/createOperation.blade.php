@@ -149,7 +149,7 @@
       @endif
 
       <div style="text-align:center">
-          <button type="submit" class="btn btn-primary" style="width:30%">Crear</button>
+          <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
       </div>
     </form>
   </div>
