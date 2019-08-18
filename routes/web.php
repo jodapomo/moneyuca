@@ -49,62 +49,18 @@ Route::get('open-operations', 'Investor\OpenOperationsController@index')->name('
 
 // CREATE OPERATION
 Route::get('create-operation', 'Investor\CreateOperationController@index')->name('investor.createOperation');
-
-
-
-
-
-
-
-
-
-
-
-
+Route::get('create-operation/signal/{signal}', 'Investor\CreateOperationController@index')->name('investor.createOperation.signal');
+Route::post('create-operation/{signal?}', 'Investor\CreateOperationController@store')->name('investor.createOperation.store');
 
 // UNINTERPRETED SIGNALS
 Route::get('uninterpreted-signals', 'Investor\UninterpretedSignalsController@index')->name('investor.uninterpretedSignals');
-
-
-
-
-
-
-
-
-
-
-
-
 
 // CREATE MODIFIER
 Route::get('create-modifier', 'Investor\CreateModifierController@index')->name('investor.createModifier');
 
 
-
-
-
-
-
-
-
-
-
-
-
 // MODIFY OPERATION
 Route::get('modify-operation', 'Investor\ModifyOperationController@index')->name('investor.modifyOperation');
-
-
-
-
-
-
-
-
-
-
-
 
 
 // ADMIN

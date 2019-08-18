@@ -25,6 +25,10 @@
     .signal-button {
       margin-bottom: 5px;
     }
+
+    .signal-button .text, .signal-button .icon {
+      padding: 1px 10px;
+    }
   </style>
 @endsection
 
@@ -56,7 +60,7 @@
                   <pre>{{ $signal->content }}</pre>
                 </div>
                 <div class="buttons">
-                    <a href="#" class="btn btn-success btn-icon-split signal-button">
+                  <a href="{{route('investor.createOperation.signal', $signal->id)}}" class="btn btn-success btn-icon-split signal-button">
                       <span class="icon text-white-50">
                         <i class="fas fa-plus"></i>
                       </span>
