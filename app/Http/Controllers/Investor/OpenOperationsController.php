@@ -26,6 +26,9 @@ class OpenOperationsController extends Controller
         // $oandaId = $user->oandaId;
         // $oandaToken = $user->oandaToken;
         // ListOpenOperations::index($oandaToken,$oandaId);
-        return view('investor.openOperations');
+        $operations = Auth::user()->operations()->where('status', 'open')->get();
+
+
+        return view('investor.openOperations', compact(['operations']));
     }
 }

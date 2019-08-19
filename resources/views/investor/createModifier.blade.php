@@ -81,6 +81,8 @@
       border-radius: 5px;
       text-align: center;
       margin-right: 10px;
+      margin-bottom: 10px;
+      margin-top: 10px;
     }
 
     .operation-signal {
@@ -96,6 +98,7 @@
       display: flex;
       flex-wrap: wrap;
       padding-left: 10px;
+      justify-content: center;
     }
 
     .custom-control-label {
