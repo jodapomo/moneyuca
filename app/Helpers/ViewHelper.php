@@ -14,10 +14,8 @@ class ViewHelper {
 
     {
 
-        if( Route::currentRouteName() === $routeName ){
-
+        if (strpos(Route::currentRouteName(), $routeName) !== false) {
             return true;
-
         }
 
         return false;
