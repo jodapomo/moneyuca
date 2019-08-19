@@ -15,12 +15,12 @@ class CreateSignalsTable extends Migration
     {
         Schema::create('signals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('message_reference')->nullable();;
+            $table->unsignedBigInteger('message_reference')->nullable();
             $table->unsignedBigInteger('message_number')->nullable();
             $table->unsignedBigInteger('channel_reference')->nullable();
             $table->date('date')->nullable();
             $table->string('content');
-            $table->boolean('interpreted')->default(false);;
+            $table->boolean('interpreted')->default(false);
             $table->timestamps();
         });
     }

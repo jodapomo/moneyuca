@@ -35,18 +35,6 @@ Route::put('account/oandaToken', 'Investor\AccountController@updateOandaToken')-
 // OPEN OPERATIONS
 Route::get('open-operations', 'Investor\OpenOperationsController@index')->name('investor.openOperations');
 
-
-
-
-
-
-
-
-
-
-
-
-
 // CREATE OPERATION
 Route::get('create-operation', 'Investor\CreateOperationController@index')->name('investor.createOperation');
 Route::get('create-operation/signal/{signal}', 'Investor\CreateOperationController@index')->name('investor.createOperation.signal');

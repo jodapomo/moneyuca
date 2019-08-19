@@ -19,12 +19,13 @@ class OpenOperationsController extends Controller
         $result = ListOpenOperations::index($oandaToken,$oandaId);
         return $result;
     }
+    
     public function index()
     {
-        $user = Auth::user();
-        $oandaId = $user->oandaId;
-        $oandaToken = $user->oandaToken;
-        ListOpenOperations::index($oandaToken,$oandaId);
-        //return view('investor.openOperations');
+        // $user = Auth::user();
+        // $oandaId = $user->oandaId;
+        // $oandaToken = $user->oandaToken;
+        // ListOpenOperations::index($oandaToken,$oandaId);
+        return view('investor.openOperations');
     }
 }

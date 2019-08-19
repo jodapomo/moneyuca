@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Role;
 use App\Models\Resume;
+use App\Models\Signal;
 
 class User extends Authenticatable
 {
@@ -85,5 +85,10 @@ class User extends Authenticatable
     public function resume()
     {
         return $this->hasOne(Resume::class);
+    }
+
+    public function operations()
+    {
+        return $this->hasMany(Signal::class);
     }
 }
