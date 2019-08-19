@@ -138,8 +138,8 @@
               <span>{{ $signal->channel_reference }}</span>
             </div>
             <div>
-              <span style="font-weight:bold">Número Mensaje:</span>
-              <span>{{ $signal->message_number }}</span>
+              <span style="font-weight:bold">Id Mensaje:</span>
+              <span>{{ $signal->message_id }}</span>
             </div>
           </div>
           <div class="col-md-6 content bg-gray-200">

@@ -67,7 +67,7 @@
                       <span class="text">Operación</span>
                     </a>
       
-                    <a href="#" class="btn btn-info btn-icon-split signal-button">
+                    <a href="{{route('investor.createModifier.signal', $signal->id)}}" class="btn btn-info btn-icon-split signal-button">
                       <span class="icon text-white-50">
                         <i class="fas fa-tools"></i>
                       </span>

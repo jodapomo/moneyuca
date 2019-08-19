@@ -45,7 +45,12 @@ Route::get('uninterpreted-signals', 'Investor\UninterpretedSignalsController@ind
 
 // CREATE MODIFIER
 Route::get('create-modifier', 'Investor\CreateModifierController@index')->name('investor.createModifier');
-
+Route::get('create-modifier/signal/{signal}', 'Investor\CreateModifierController@index')->name('investor.createModifier.signal');
+Route::get('create-modifier/{type}/{signal?}', 'Investor\CreateModifierController@showForm')->name('investor.createModifier.showForm');
+Route::post('create-modifier/break-even/{signal?}', 'Investor\CreateModifierController@storeBreakEven')->name('investor.createModifier.storeBreakEven');
+Route::post('create-modifier/close-all/{signal?}', 'Investor\CreateModifierController@storeCloseAll')->name('investor.createModifier.storeCloseAll');
+Route::post('create-modifier/cancel/{signal?}', 'Investor\CreateModifierController@storeCancel')->name('investor.createModifier.storeCancel');
+Route::post('create-modifier/move-stop-loss/{signal?}', 'Investor\CreateModifierController@storeMoveStopLoss')->name('investor.createModifier.storeMoveStopLoss');
 
 // MODIFY OPERATION
 Route::get('modify-operation', 'Investor\ModifyOperationController@index')->name('investor.modifyOperation');

@@ -6,7 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Role;
 use App\Models\Resume;
-use App\Models\Signal;
+use App\Models\Operation;
+use App\Models\Modifier;
 
 class User extends Authenticatable
 {
@@ -89,6 +90,11 @@ class User extends Authenticatable
 
     public function operations()
     {
-        return $this->hasMany(Signal::class);
+        return $this->hasMany(Operation::class);
+    }
+
+    public function modifiers()
+    {
+        return $this->hasMany(Modifier::class);
     }
 }

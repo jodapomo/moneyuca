@@ -16,7 +16,7 @@ class CreateSignalsTable extends Migration
         Schema::create('signals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('message_reference')->nullable();
-            $table->unsignedBigInteger('message_number')->nullable();
+            $table->unsignedBigInteger('message_id')->nullable();
             $table->unsignedBigInteger('channel_reference')->nullable();
             $table->date('date')->nullable();
             $table->string('content');

@@ -24,16 +24,17 @@
 	</a>
 </li>
 
-<li class="nav-item {{ ViewHelper::isRouteActive('investor.uninterpretedSignals') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('investor.uninterpretedSignals') }}">
-        <i class="far fa-question-circle fa-fw"></i>
-		<span>Señales No Interpretadas</span>
-	</a>
-</li>
-
 <li class="nav-item {{ ViewHelper::isRouteActive('investor.createModifier') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('investor.createModifier') }}">
         <i class="fas fa-tools fa-fw"></i>
 		<span>Crear Modificador</span>
 	</a>
 </li>
+
+<li class="nav-item {{ ViewHelper::isRouteActive('investor.uninterpretedSignals') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('investor.uninterpretedSignals') }}">
+                <i class="far fa-question-circle fa-fw"></i>
+                <span>Señales No Interpretadas</span>
+        </a>
+</li>
+    
