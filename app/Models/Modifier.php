@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Modifier extends Model
 {
     protected $fillable = [
-        'type', 'message_reference', 'currency_pair', 'price'
+        'type', 'operation_reference', 'currency_pair', 'price'
     ];
 
 

@@ -10,6 +10,7 @@ use App\Http\Requests\StoreModifierCancel;
 use App\Http\Requests\StoreModifierMoveStopLoss;
 use App\Models\Signal;
 use App\Models\Modifier;
+use App\Models\Operation;
 use Illuminate\Support\Facades\Auth;
 
 class CreateModifierController extends Controller
@@ -35,7 +36,7 @@ class CreateModifierController extends Controller
 
         $modifier = new Modifier([
             'type' => 'break_even',
-            'message_reference' => $data['message_reference'],
+            'operation_reference' => $data['operation_reference'],
         ]);
 
         $modifier->user()->associate(Auth::user());
@@ -79,7 +80,7 @@ class CreateModifierController extends Controller
 
         $modifier = new Modifier([
             'type' => 'cancel',
-            'message_reference' => $data['message_reference'],
+            'operation_reference' => $data['operation_reference'],
         ]);
 
         $modifier->user()->associate(Auth::user());
@@ -101,7 +102,7 @@ class CreateModifierController extends Controller
 
         $modifier = new Modifier([
             'type' => 'move_stop_loss',
-            'message_reference' => $data['message_reference'],
+            'operation_reference' => $data['operation_reference'],
             'price' => $data['price'],
         ]);
 
@@ -124,10 +125,13 @@ class CreateModifierController extends Controller
         $validTypes = ['breakEven', 'closeAll', 'cancel', 'moveStopLoss'];
 
         if (in_array($type, $validTypes)) { 
+
+            $operations = Auth::user()->operations()->where('status', 'open')->get();
+
             if ($signal != null) {
-                return redirect()->route('investor.createModifier.signal', $signal->id)->with($type, True);
+                return redirect()->route('investor.createModifier.signal', $signal->id)->with($type, True)->with('operations', $operations);
             } else {
-                return redirect()->route('investor.createModifier')->with($type, True);
+                return redirect()->route('investor.createModifier')->with($type, True)->with('operations', $operations);
             }
         } 
         else { 

@@ -25,7 +25,7 @@ class StoreModifierBreakEven extends FormRequest
     {
         
         return [
-            'message_reference' => 'required',
+            'operation_reference' => 'required|exists:operations,id',
         ];
     }
 
@@ -34,11 +34,12 @@ class StoreModifierBreakEven extends FormRequest
      *
      * @return array
      */
-    // public function messages()
-    // {
-    //     return [
-
-    //     ];
-    // }
+    public function messages()
+    {
+        return [
+            'operation_reference.required' => 'Seleccione una operación antes de crear el modificador Break Even.',
+            'operation_reference.exists' => 'Operación seleccionada no es válida.',
+        ];
+    }
 
 }

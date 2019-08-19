@@ -16,15 +16,23 @@ class StoreModifierCancel extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            'message_reference' => 'required',
+            'operation_reference' => 'required|exists:operations,id',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'operation_reference.required' => 'Seleccione la operación que desea cancelar.',
+            'operation_reference.exists' => 'Operación seleccionada no es válida.',
         ];
     }
 }

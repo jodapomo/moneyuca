@@ -27,4 +27,12 @@ class StoreModifierCloseAll extends FormRequest
             'currency_pair' => 'required|string',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'currency_pair.required' => 'El par moneda es requerido.',
+            'currency_pair.string' => 'El par moneda debe ser de tipo texto.',
+        ];
+    }
 }

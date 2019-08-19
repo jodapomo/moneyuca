@@ -25,7 +25,19 @@ class StoreModifierMoveStopLoss extends FormRequest
     {
         return [
             'price' => 'required|numeric|min:0',
-            'message_reference' => 'required',
+            'operation_reference' => 'required|exists:operations,id',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'operation_reference.required' => 'Seleccione la operación que desea cancelar.',
+            'operation_reference.exists' => 'Operación seleccionada no es válida.',
+
+            'price.required' => 'El precio del modificador es requerido.',
+            'price.numeric' => 'El precio del modificador debe ser un número.',
+            'price.min' => 'El precio del modificador debe ser un número mayor a cero.',
         ];
     }
 }

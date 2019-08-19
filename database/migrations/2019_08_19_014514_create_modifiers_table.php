@@ -17,20 +17,20 @@ class CreateModifiersTable extends Migration
             $table->bigIncrements('id');
             $table->string('type');
 
-            $table->unsignedBigInteger('message_reference')->nullable();
+            $table->unsignedBigInteger('operation_reference')->nullable();
 
             // BreakEven
-            // message_reference
+            // operation_reference
 
             // CloseAll
-            // NOT message_reference
+            // NOT operation_reference
             $table->string('currency_pair')->nullable();
 
             // Cancel 
-            //  message_reference
+            //  operation_reference
 
             // MoveStopLoss
-            // message_reference
+            // operation_reference
             $table->double('price', 15, 8)->nullable();	
 
             $table->unsignedBigInteger('signal_id')->nullable();

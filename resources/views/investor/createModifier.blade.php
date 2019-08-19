@@ -10,6 +10,7 @@
       margin: 10px 0px 20px 0px;
     }
 
+
     .content pre {
       margin-bottom: 0;
     }
@@ -45,6 +46,64 @@
 
     .type-button .icon {
       padding: 0!important;
+    }
+
+    .operation {
+      border: 2px solid #b7b9cc;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      cursor: pointer;
+    }
+
+    .operation .type-pair {
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: center;
+      border-right: 1px solid #b7b9cc;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .operation .type-pair .type {
+      font-weight: bold;
+      font-size: 25px;
+      color: #1cc88a;
+    }
+
+    .operation-data .data-box {
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #b7b9cc;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      margin-right: 10px;
+    }
+
+    .operation-signal {
+      padding-left: 10px;
+      padding-right: 10px;
+      border-left: 1px solid #b7b9cc;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .operation .operation-data {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 10px;
+    }
+
+    .custom-control-label {
+      margin-bottom: 20px;
+    }
+
+    .custom-radio input[type="radio"]:checked+label .operation {
+      border: 2px solid #4e73df;
     }
   </style>
 @endsection
@@ -153,23 +212,73 @@
     <form method="POST" action="{{ route('investor.createModifier.storeBreakEven') }}">
     @endif
     @csrf
-      <h5>Operacions Abiertas:</h5>
-      @error('message_reference')
-        <div  class="invalid-feedback" style="display:block" role="alert">
-            {{ $message }}
-        </div >
-      @enderror
-      <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio1">Operación 1</label>
+      @if ( ($operations = session('operations')) && session('operations')->isNotEmpty())
+        <h5>Operacions Abiertas:</h5>
+        @error('operation')
+          <div  class="invalid-feedback" style="display:block" role="alert">
+              {{ $message }}
+          </div >
+        @enderror
+        @foreach($operations as $operation)
+          <div class="custom-control custom-radio">
+            <input type="radio" id="radio-{{$operation->id}}" name="operation_reference" value="{{ $operation->id }}" class="custom-control-input">
+            <label class="custom-control-label" for="radio-{{$operation->id}}">
+              <div class="operation">
+                <div class="type-pair">
+                  <div class="type">{{$operation->type}}</div>
+                  <div class="currency-pair">{{$operation->currency_pair}}</div>  
+                </div>
+                <div class="operation-data">
+                  <div class="data-box">
+                    <span style="font-weight:bold">Precio</span>
+                    <span>{{ $operation->price }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">Stop Loss</span>
+                    <span>{{ $operation->stop_loss }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 1</span>
+                    <span>{{ $operation->take_profit_1 }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 2</span>
+                    <span>{{ $operation->take_profit_2 }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 3</span>
+                    <span>{{ $operation->take_profit_3 }}</span>
+                  </div>
+                </div>
+                @if ( $operation->signal )
+                <div class="operation-signal">
+                  <div>
+                    <span style="font-weight:bold">Id Mensaje:</span>
+                    <span>{{ $operation->signal->message_id }}</span>
+                  </div>
+                  <div>
+                    <span style="font-weight:bold">Referencia Mensaje:</span>
+                    <span>{{ $operation->signal->message_reference }}</span>
+                  </div>
+                  <div>
+                    <span style="font-weight:bold">Referencia Canal:</span>
+                    <span>{{ $operation->signal->channel_reference }}</span>
+                  </div>
+                </div>
+                @endif
+              </div>
+            </label>
+          </div>
+        @endforeach
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
         </div>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio2">Operación 2</label>
+      @else
+        <div class="alert alert-info" role="alert">
+            No se encontraron operaciones abiertas para modificar.
         </div>
-      <div style="text-align:center">
-          <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
-      </div>
+      @endif
+
     </form>
   @endif
 
@@ -206,23 +315,72 @@
     <form method="POST" action="{{ route('investor.createModifier.storeCancel') }}">
     @endif
     @csrf
-      <h5>Operacions Abiertas:</h5>
-      @error('message_reference')
-        <div  class="invalid-feedback" style="display:block" role="alert">
-            {{ $message }}
-        </div >
-      @enderror
-      <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio1">Operación 1</label>
+      @if ( ($operations = session('operations')) && session('operations')->isNotEmpty())
+        <h5>Operacions Abiertas:</h5>
+        @error('operation')
+          <div  class="invalid-feedback" style="display:block" role="alert">
+              {{ $message }}
+          </div >
+        @enderror
+        @foreach($operations as $operation)
+          <div class="custom-control custom-radio">
+            <input type="radio" id="radio-{{$operation->id}}" name="operation_reference" value="{{ $operation->id }}" class="custom-control-input">
+            <label class="custom-control-label" for="radio-{{$operation->id}}">
+              <div class="operation">
+                <div class="type-pair">
+                  <div class="type">{{$operation->type}}</div>
+                  <div class="currency-pair">{{$operation->currency_pair}}</div>  
+                </div>
+                <div class="operation-data">
+                  <div class="data-box">
+                    <span style="font-weight:bold">Precio</span>
+                    <span>{{ $operation->price }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">Stop Loss</span>
+                    <span>{{ $operation->stop_loss }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 1</span>
+                    <span>{{ $operation->take_profit_1 }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 2</span>
+                    <span>{{ $operation->take_profit_2 }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 3</span>
+                    <span>{{ $operation->take_profit_3 }}</span>
+                  </div>
+                </div>
+                @if ( $operation->signal )
+                <div class="operation-signal">
+                  <div>
+                    <span style="font-weight:bold">Id Mensaje:</span>
+                    <span>{{ $operation->signal->message_id }}</span>
+                  </div>
+                  <div>
+                    <span style="font-weight:bold">Referencia Mensaje:</span>
+                    <span>{{ $operation->signal->message_reference }}</span>
+                  </div>
+                  <div>
+                    <span style="font-weight:bold">Referencia Canal:</span>
+                    <span>{{ $operation->signal->channel_reference }}</span>
+                  </div>
+                </div>
+                @endif
+              </div>
+            </label>
+          </div>
+        @endforeach
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
         </div>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio2">Operación 2</label>
+      @else
+        <div class="alert alert-info" role="alert">
+            No se encontraron operaciones abiertas para modificar.
         </div>
-      <div style="text-align:center">
-          <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
-      </div>
+      @endif
     </form>
   @endif
 
@@ -235,34 +393,81 @@
     <form method="POST" action="{{ route('investor.createModifier.storeMoveStopLoss') }}">
     @endif
     @csrf
-      <div class="form-group col-md-4">
-        <label for="inputPassword4">Precio</label>
-        <input type="number" class="form-control" name="price" min="0" step="any" value="{{ old('price') }}">
-        @error('price')
+      @if ( ($operations = session('operations')) && session('operations')->isNotEmpty())
+        <div class="form-group col-md-4">
+          <label for="inputPassword4">Precio</label>
+          <input type="number" class="form-control" name="price" min="0" step="any" value="{{ old('price') }}">
+          @error('price')
+            <div  class="invalid-feedback" style="display:block" role="alert">
+                {{ $message }}
+            </div >
+          @enderror
+        </div>
+        <h5>Operacions Abiertas:</h5>
+        @error('operation')
           <div  class="invalid-feedback" style="display:block" role="alert">
               {{ $message }}
           </div >
         @enderror
-      </div>
-
-      <h5>Operacions Abiertas:</h5>
-      @error('message_reference')
-        <div  class="invalid-feedback" style="display:block" role="alert">
-            {{ $message }}
-        </div >
-      @enderror
-      <div class="custom-control custom-radio">
-        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-        <label class="custom-control-label" for="customRadio1">Operación 1</label>
-      </div>
-      <div class="custom-control custom-radio">
-        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-        <label class="custom-control-label" for="customRadio2">Operación 2</label>
-      </div>
-
-      <div style="text-align:center">
-          <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
-      </div>
+        @foreach($operations as $operation)
+          <div class="custom-control custom-radio">
+            <input type="radio" id="radio-{{$operation->id}}" name="operation_reference" value="{{ $operation->id }}" class="custom-control-input">
+            <label class="custom-control-label" for="radio-{{$operation->id}}">
+              <div class="operation">
+                <div class="type-pair">
+                  <div class="type">{{$operation->type}}</div>
+                  <div class="currency-pair">{{$operation->currency_pair}}</div>  
+                </div>
+                <div class="operation-data">
+                  <div class="data-box">
+                    <span style="font-weight:bold">Precio</span>
+                    <span>{{ $operation->price }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">Stop Loss</span>
+                    <span>{{ $operation->stop_loss }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 1</span>
+                    <span>{{ $operation->take_profit_1 }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 2</span>
+                    <span>{{ $operation->take_profit_2 }}</span>
+                  </div>
+                  <div class="data-box">
+                    <span style="font-weight:bold">TP 3</span>
+                    <span>{{ $operation->take_profit_3 }}</span>
+                  </div>
+                </div>
+                @if ( $operation->signal )
+                <div class="operation-signal">
+                  <div>
+                    <span style="font-weight:bold">Id Mensaje:</span>
+                    <span>{{ $operation->signal->message_id }}</span>
+                  </div>
+                  <div>
+                    <span style="font-weight:bold">Referencia Mensaje:</span>
+                    <span>{{ $operation->signal->message_reference }}</span>
+                  </div>
+                  <div>
+                    <span style="font-weight:bold">Referencia Canal:</span>
+                    <span>{{ $operation->signal->channel_reference }}</span>
+                  </div>
+                </div>
+                @endif
+              </div>
+            </label>
+          </div>
+        @endforeach
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
+        </div>
+      @else
+        <div class="alert alert-info" role="alert">
+            No se encontraron operaciones abiertas para modificar.
+        </div>
+      @endif
     </form>
   @endif
 
