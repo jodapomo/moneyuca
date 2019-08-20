@@ -10,21 +10,27 @@ class ListOpenOperations
     }
     public static function index($oandaToken, $oandaId)
     {
-        print $oandaId;
         $client = new \GuzzleHttp\Client();
-        $url = strval(Oanda::base($oandaId)).'orders';
-        $request = $client->request(
-            'GET',
-            $url,
-            ['headers' => [
-                'Authorization' => ['Bearer '.$oandaToken]]
-            ],
-            ['json' => true]
-        );
+        $url = strval(Oanda::base($oandaId)) . 'openTrades';
 
-        $response = $request->getBody();
-        echo $response;
-        dd($response);
+        try {
+            $response = $client->request(
+                'GET',
+                $url,
+                ['headers' => [
+                    'Authorization' => ['Bearer ' . $oandaToken]]
+                ],
+                ['json' => true]
+            );
+    
+            $body = json_decode($response->getBody());
+    
+            return $body;
+        } catch (\Throwable $th) {
+            return null;
+        }
+
+
     }
 
 

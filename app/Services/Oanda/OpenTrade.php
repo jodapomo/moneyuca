@@ -24,7 +24,7 @@ class OpenTrade
         //$body = json_encode($body);
         $headers = [
             'Content-Type' => 'application/json',
-            'Authorization' => "Bearer ".$oandaToken,
+            'Authorization' => "Bearer " . $oandaToken,
         ];
 
         $client = new \GuzzleHttp\Client(

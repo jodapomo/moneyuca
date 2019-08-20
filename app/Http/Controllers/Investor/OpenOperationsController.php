@@ -22,12 +22,11 @@ class OpenOperationsController extends Controller
     
     public function index()
     {
-        // $user = Auth::user();
-        // $oandaId = $user->oandaId;
-        // $oandaToken = $user->oandaToken;
-        // ListOpenOperations::index($oandaToken,$oandaId);
-        $operations = Auth::user()->operations()->where('status', 'open')->get();
+        $oandaId = Auth::user()->oandaId;
+        $oandaToken = Auth::user()->oandaToken;
+        $res = ListOpenOperations::index($oandaToken,$oandaId);
 
+        $operations = Auth::user()->operations()->where('status', 'open')->get();
 
         return view('investor.openOperations', compact(['operations']));
     }
