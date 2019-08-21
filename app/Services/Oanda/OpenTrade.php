@@ -10,7 +10,7 @@ class OpenTrade
     }
     public static function index($oandaToken, $oandaId, $instrument, $type, $units, $takeProfit, $stopLoss, $price)
     {
-        print $oandaId;
+
         $body = 
             ['order'=>[
             'instrument' => $instrument,
@@ -21,7 +21,7 @@ class OpenTrade
             'takeProfitOnFill' => ['price' => $takeProfit],
             'stopLossOnFill' => ['price' => $stopLoss]
             ]];
-        //$body = json_encode($body);
+
         $headers = [
             'Content-Type' => 'application/json',
             'Authorization' => "Bearer " . $oandaToken,
@@ -31,16 +31,22 @@ class OpenTrade
             ['headers' => $headers]
         );
         $url = strval(Oanda::base($oandaId)).'orders';
-        echo json_encode($body);
-        $request = $client->request(
-            "POST",
-            $url,
-            ['body' => json_encode($body,JSON_FORCE_OBJECT)]
-        );
-        $response = $request->getBody();
-        echo $response;
-        dd($response);
-    }
 
+        try {
+            $response = $client->request(
+                "POST",
+                $url,
+                ['body' => json_encode($body,JSON_FORCE_OBJECT)]
+            );
+    
+            $body = json_decode($response->getBody());
+    
+            return $body;
+        } catch (\Throwable $th) {
+            return null;
+        }
+        
+
+    }
 
 }

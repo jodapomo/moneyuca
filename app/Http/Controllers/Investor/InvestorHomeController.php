@@ -17,7 +17,6 @@ class InvestorHomeController extends Controller
 
         if ( $res == null ) {
             $resume = Auth::user()->resume;
-            // dd($resume->balance);
             $summary = (object)[
                 'balance' => $resume->balance,
                 'openTradeCount' => $resume->open_operations,

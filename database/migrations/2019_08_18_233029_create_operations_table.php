@@ -17,6 +17,8 @@ class CreateOperationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('type');
             $table->string('currency_pair');
+            $table->integer('units');
+            $table->integer('oandaOpId');
             $table->double('price', 15, 8);	
             $table->double('stop_loss', 15, 8);	
             $table->double('take_profit_1', 15, 8);	

@@ -60,7 +60,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="inputPassword4">Par Moneda</label>
-          <input type="text" class="form-control" name="currency_pair" placeholder="e.g EURUSD" value="{{ old('currency_pair') }}">
+          <input type="text" class="form-control" name="currency_pair" placeholder="e.g EUR_USD" value="{{ old('currency_pair') }}">
           @error('currency_pair')
             <div  class="invalid-feedback" style="display:block" role="alert">
                 {{ $message }}
