@@ -21,9 +21,12 @@ class AccountController extends Controller
 
     public function updateName(Request $request)
     {
-        $data = $this->validate($request, [
-            'name' => ['required', 'string', 'max:255']
+        $data = request()->validate([
+            'name' => ['required', 'string', 'max:255'],  
+        ], [
+            'name.required' => 'Debe ingresar un nombre para confirmar el cambio.',
         ]);
+
         $currentUser = Auth::user();
         $currentUser->update($data);
         return redirect()->route('investor.manageAccount')->with('mensaje',
@@ -31,10 +34,12 @@ class AccountController extends Controller
     }
     public function updatePassword(Request $request)
     {
-        $data = $this->validate($request, [
-            'password' => ['required', 'string', 'confirmed'],[
+        $data = request()->validate([
+            'password' => ['required', 'string', 'confirmed'],
+        
+        ], [
                 'password.confirmed' => 'La confirmación de la contraseña no coincide.',
-            ]
+                'password.required' => 'Debe ingresar ambas contraseñas antes de confirmar el cambio.',
         ]);
         $currentUser = Auth::user();
         $currentUser->password = Hash::make($data['password']);
@@ -44,8 +49,10 @@ class AccountController extends Controller
     }
     public function updateOandaId(Request $request)
     {
-        $data = $this->validate($request, [
+        $data = request()->validate([
             'oandaId' => ['required','string', 'max:255']
+        ], [
+            'oandaId.required' => 'Debe ingresar un id de Oanda antes de confirmar el cambio.',
         ]);
         $currentUser = Auth::user();
         $currentUser->update($data);
@@ -54,14 +61,16 @@ class AccountController extends Controller
     }
     public function updateOandaToken(Request $request)
     {
-        $data = $this->validate($request, [
+        $data = request()->validate([
             'oandaToken' => ['required','string', 'max:255']
+        ], [
+            'oandaToken.required' => 'Debe ingresar un token de Oanda antes de confirmar el cambio.',
         ]);
+
         $currentUser = Auth::user();
         $currentUser->update($data);
         return redirect()->route('investor.manageAccount')->with('mensaje',
             'Tu Token de Oanda ha sido actualizado correctamente!');
     }
-
 
 }
