@@ -237,6 +237,10 @@
                     <span>{{ $operation->price }}</span>
                   </div>
                   <div class="data-box">
+                    <span style="font-weight:bold">Unidades</span>
+                    <span>{{ $operation->units }}</span>
+                  </div>
+                  <div class="data-box">
                     <span style="font-weight:bold">Stop Loss</span>
                     <span>{{ $operation->stop_loss }}</span>
                   </div>
@@ -244,14 +248,18 @@
                     <span style="font-weight:bold">TP 1</span>
                     <span>{{ $operation->take_profit_1 }}</span>
                   </div>
-                  <div class="data-box">
-                    <span style="font-weight:bold">TP 2</span>
-                    <span>{{ $operation->take_profit_2 }}</span>
-                  </div>
-                  <div class="data-box">
-                    <span style="font-weight:bold">TP 3</span>
-                    <span>{{ $operation->take_profit_3 }}</span>
-                  </div>
+                  @isset($operation->take_profit_2)
+                    <div class="data-box">
+                      <span style="font-weight:bold">TP 2</span>
+                      <span>{{ $operation->take_profit_2 }}</span>
+                    </div>
+                  @endisset
+                  @isset($operation->take_profit_3)
+                    <div class="data-box">
+                      <span style="font-weight:bold">TP 3</span>
+                      <span>{{ $operation->take_profit_3 }}</span>
+                    </div>
+                  @endisset
                 </div>
                 @if ( $operation->signal )
                 <div class="operation-signal">
@@ -294,18 +302,24 @@
     <form method="POST" action="{{ route('investor.createModifier.storeCloseAll') }}">
     @endif
     @csrf
-      <div class="form-group col-md-4">
-        <label for="inputPassword4">Par Moneda</label>
-        <input type="text" class="form-control" name="currency_pair" placeholder="e.g EURUSD" value="{{ old('currency_pair') }}">
-        @error('currency_pair')
-          <div  class="invalid-feedback" style="display:block" role="alert">
-              {{ $message }}
-          </div >
-        @enderror
-      </div>
-      <div style="text-align:center">
-          <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
-      </div>
+      @if ( ($operations = session('operations')) && session('operations')->isNotEmpty())
+        <div class="form-group col-md-4">
+          <label for="inputPassword4">Par Moneda</label>
+          <input type="text" class="form-control" name="currency_pair" placeholder="e.g EURUSD" value="{{ old('currency_pair') }}">
+          @error('currency_pair')
+            <div  class="invalid-feedback" style="display:block" role="alert">
+                {{ $message }}
+            </div >
+          @enderror
+        </div>
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-primary" style="width:30%; margin-bottom: 20px;">Crear</button>
+        </div>
+      @else
+        <div class="alert alert-info" role="alert">
+            No se encontraron operaciones abiertas para modificar.
+        </div>
+      @endif
     </form>
   @endif
 
@@ -340,6 +354,10 @@
                     <span>{{ $operation->price }}</span>
                   </div>
                   <div class="data-box">
+                    <span style="font-weight:bold">Unidades</span>
+                    <span>{{ $operation->units }}</span>
+                  </div>
+                  <div class="data-box">
                     <span style="font-weight:bold">Stop Loss</span>
                     <span>{{ $operation->stop_loss }}</span>
                   </div>
@@ -347,14 +365,18 @@
                     <span style="font-weight:bold">TP 1</span>
                     <span>{{ $operation->take_profit_1 }}</span>
                   </div>
-                  <div class="data-box">
-                    <span style="font-weight:bold">TP 2</span>
-                    <span>{{ $operation->take_profit_2 }}</span>
-                  </div>
-                  <div class="data-box">
-                    <span style="font-weight:bold">TP 3</span>
-                    <span>{{ $operation->take_profit_3 }}</span>
-                  </div>
+                  @isset($operation->take_profit_2)
+                    <div class="data-box">
+                      <span style="font-weight:bold">TP 2</span>
+                      <span>{{ $operation->take_profit_2 }}</span>
+                    </div>
+                  @endisset
+                  @isset($operation->take_profit_3)
+                    <div class="data-box">
+                      <span style="font-weight:bold">TP 3</span>
+                      <span>{{ $operation->take_profit_3 }}</span>
+                    </div>
+                  @endisset
                 </div>
                 @if ( $operation->signal )
                 <div class="operation-signal">
@@ -427,6 +449,10 @@
                     <span>{{ $operation->price }}</span>
                   </div>
                   <div class="data-box">
+                    <span style="font-weight:bold">Unidades</span>
+                    <span>{{ $operation->units }}</span>
+                  </div>
+                  <div class="data-box">
                     <span style="font-weight:bold">Stop Loss</span>
                     <span>{{ $operation->stop_loss }}</span>
                   </div>
@@ -434,14 +460,18 @@
                     <span style="font-weight:bold">TP 1</span>
                     <span>{{ $operation->take_profit_1 }}</span>
                   </div>
-                  <div class="data-box">
-                    <span style="font-weight:bold">TP 2</span>
-                    <span>{{ $operation->take_profit_2 }}</span>
-                  </div>
-                  <div class="data-box">
-                    <span style="font-weight:bold">TP 3</span>
-                    <span>{{ $operation->take_profit_3 }}</span>
-                  </div>
+                  @isset($operation->take_profit_2)
+                    <div class="data-box">
+                      <span style="font-weight:bold">TP 2</span>
+                      <span>{{ $operation->take_profit_2 }}</span>
+                    </div>
+                  @endisset
+                  @isset($operation->take_profit_3)
+                    <div class="data-box">
+                      <span style="font-weight:bold">TP 3</span>
+                      <span>{{ $operation->take_profit_3 }}</span>
+                    </div>
+                  @endisset
                 </div>
                 @if ( $operation->signal )
                 <div class="operation-signal">

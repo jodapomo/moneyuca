@@ -3,13 +3,6 @@
         Administrar
 </div>
 
-<li class="nav-item {{ ViewHelper::isRouteActive('investor.manageAccount') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('investor.manageAccount') }}">
-        <i class="fas fa-user fa-fw"></i>
-		<span>Mi Cuenta</span>
-	</a>
-</li>
-
 <li class="nav-item {{ ViewHelper::isRouteActive('investor.openOperations') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('investor.openOperations') }}">
         <i class="fas fa-fire fa-fw"></i>
@@ -37,4 +30,10 @@
                 <span>Señales No Interpretadas</span>
         </a>
 </li>
-    
+
+<li class="nav-item {{ ViewHelper::isRouteActive('investor.manageAccount') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('investor.manageAccount') }}">
+                <i class="fas fa-user fa-fw"></i>
+                <span>Mi Cuenta</span>
+        </a>
+</li>

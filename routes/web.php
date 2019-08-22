@@ -52,10 +52,6 @@ Route::post('create-modifier/close-all/{signal?}', 'Investor\CreateModifierContr
 Route::post('create-modifier/cancel/{signal?}', 'Investor\CreateModifierController@storeCancel')->name('investor.createModifier.storeCancel');
 Route::post('create-modifier/move-stop-loss/{signal?}', 'Investor\CreateModifierController@storeMoveStopLoss')->name('investor.createModifier.storeMoveStopLoss');
 
-// MODIFY OPERATION
-Route::get('modify-operation', 'Investor\ModifyOperationController@index')->name('investor.modifyOperation');
-
-
 // ADMIN
 
 // NEW INVESTORS

@@ -119,6 +119,11 @@
             </div >
           @enderror
         </div>
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="oandaCheck" name="oanda">
+          <label class="form-check-label" for="oandaCheck">Oanda</label>
+        </div>
       </div>
       
       @if (isset($signal))   

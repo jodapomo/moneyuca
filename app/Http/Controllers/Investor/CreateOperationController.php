@@ -30,22 +30,31 @@ class CreateOperationController extends Controller
     {
         $data = $request->validated();
 
-        $oandaId = Auth::user()->oandaId;
-        $oandaToken = Auth::user()->oandaToken;
-        
         $units = self::getUnits($data['type'], 1000);
-        $type = self::handleOperationType($data['type']);
 
-        $oandaOperation = OpenTrade::index($oandaToken, $oandaId, $data['currency_pair'], $type, $units, $data['take_profit_1'], $data['stop_loss'], $data['price']);
+        if (isset($data['oanda'])) {
+            $oandaId = Auth::user()->oandaId;
+            $oandaToken = Auth::user()->oandaToken;
 
-        if($oandaOperation == null || $oandaOperation->orderCancelTransaction != null) {
-            return redirect()->route('investor.openOperations')->with('error', 'Error creando la operación. Vuelva a intentar.');
+            $type = self::handleOperationType($data['type']);
+
+            $oandaOperation = OpenTrade::index($oandaToken, $oandaId, $data['currency_pair'], $type, $units, $data['take_profit_1'], $data['stop_loss'], $data['price']);
+    
+            if($oandaOperation == null || property_exists($oandaOperation,'orderCancelTransaction')) {
+                return redirect()->route('investor.openOperations')->with('error', 'Error creando la operación. Vuelva a intentar.');
+            }
+        }
+
+        if (isset($oandaOperation->orderFillTransaction->id)) {
+            $oandaOpId = $oandaOperation->orderFillTransaction->id;
+        } else {
+            $oandaOpId = 0;
         }
 
         $operation = new Operation([
             'type' => $data['type'],
             'units' => $units,
-            'oandaOpId' => $oandaOperation->orderCreateTransaction->id,
+            'oandaOpId' => $oandaOpId,
             'currency_pair' => $data['currency_pair'],
             'price' => $data['price'],
             'stop_loss' => $data['stop_loss'],

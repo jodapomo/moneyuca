@@ -115,6 +115,10 @@
                     <span>{{ $operation->price }}</span>
                   </div>
                   <div class="data-box">
+                    <span style="font-weight:bold">Unidades</span>
+                    <span>{{ $operation->units }}</span>
+                  </div>
+                  <div class="data-box">
                     <span style="font-weight:bold">Stop Loss</span>
                     <span>{{ $operation->stop_loss }}</span>
                   </div>
@@ -122,14 +126,18 @@
                     <span style="font-weight:bold">TP 1</span>
                     <span>{{ $operation->take_profit_1 }}</span>
                   </div>
-                  <div class="data-box">
-                    <span style="font-weight:bold">TP 2</span>
-                    <span>{{ $operation->take_profit_2 }}</span>
-                  </div>
-                  <div class="data-box">
-                    <span style="font-weight:bold">TP 3</span>
-                    <span>{{ $operation->take_profit_3 }}</span>
-                  </div>
+                  @isset($operation->take_profit_2)
+                    <div class="data-box">
+                      <span style="font-weight:bold">TP 2</span>
+                      <span>{{ $operation->take_profit_2 }}</span>
+                    </div>
+                  @endisset
+                  @isset($operation->take_profit_3)
+                    <div class="data-box">
+                      <span style="font-weight:bold">TP 3</span>
+                      <span>{{ $operation->take_profit_3 }}</span>
+                    </div>
+                  @endisset
                 </div>
                 <div class="operation-dates">
                   <div>

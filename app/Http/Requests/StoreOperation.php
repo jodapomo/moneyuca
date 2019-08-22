@@ -31,6 +31,7 @@ class StoreOperation extends FormRequest
             'take_profit_1' => 'required|numeric|min:0',
             'take_profit_2' => 'nullable|numeric|min:0',
             'take_profit_3' => 'nullable|numeric|min:0',
+            'oanda' => '',
         ];
     }
 

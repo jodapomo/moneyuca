@@ -19,7 +19,7 @@ class CancelOp
             ['headers' => $headers]
         );
         $url = strval(Oanda::base($oandaId)).'trades/'.$tradeId.'/close';
-        echo json_encode($body);
+
         try {
             $request = $client->request(
                "PUT",
@@ -33,6 +33,5 @@ class CancelOp
             return null;
         }
     }
-
 
 }

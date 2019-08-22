@@ -49,6 +49,11 @@ class CreateModifierController extends Controller
 
         $modifier->save();
 
+        $operation = Auth::user()->operations()->where('status', 'open')->where('id', $data['operation_reference'])->first();
+
+        $operation->stop_loss = $operation->price;
+        $operation->save();
+
         return redirect()->route('investor.openOperations')->with('success', 'Modificador Break Even creado correctamente.');
     }
 
@@ -71,6 +76,8 @@ class CreateModifierController extends Controller
 
         $modifier->save();
 
+        Auth::user()->operations()->where('status', 'open')->where('currency_pair', $data['currency_pair'])->update(['status' => 'close']);
+
         return redirect()->route('investor.openOperations')->with('success', 'Cerradas las operaciones con el par mondea: ' . $modifier->currency_pair);
     }
 
@@ -92,6 +99,8 @@ class CreateModifierController extends Controller
         }
 
         $modifier->save();
+
+        Auth::user()->operations()->where('status', 'open')->where('id', $data['operation_reference'])->update(['status' => 'close']);
 
         return redirect()->route('investor.openOperations')->with('success', 'Operación cancelada exitosamente.');
     }
@@ -116,6 +125,11 @@ class CreateModifierController extends Controller
 
         $modifier->save();
 
+        $operation = Auth::user()->operations()->where('status', 'open')->where('id', $data['operation_reference'])->first();
+
+        $operation->stop_loss = $data['price'];
+        $operation->save();
+
         return redirect()->route('investor.openOperations')->with('success', 'Stop Loss movido existosamente.');
     }
     
@@ -126,7 +140,7 @@ class CreateModifierController extends Controller
 
         if (in_array($type, $validTypes)) { 
 
-            $operations = Auth::user()->operations()->where('status', 'open')->get();
+            $operations = Auth::user()->operations()->where('status', 'open')->orderBy('id', 'DESC')->get();
 
             if ($signal != null) {
                 return redirect()->route('investor.createModifier.signal', $signal->id)->with($type, True)->with('operations', $operations);

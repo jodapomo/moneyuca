@@ -35,6 +35,4 @@ class MoveStopLoss
             return null;
         }
     }
-
-
 }
