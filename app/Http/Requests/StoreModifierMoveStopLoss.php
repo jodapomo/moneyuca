@@ -32,7 +32,7 @@ class StoreModifierMoveStopLoss extends FormRequest
     public function messages()
     {
         return [
-            'operation_reference.required' => 'Seleccione la operación que desea cancelar.',
+            'operation_reference.required' => 'Seleccione la operación a la cual desea modificarle el Stop Loss.',
             'operation_reference.exists' => 'Operación seleccionada no es válida.',
 
             'price.required' => 'El precio del modificador es requerido.',
