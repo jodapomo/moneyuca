@@ -124,9 +124,9 @@
   <div class="modifier-types-buttons">
 
     @if (isset($signal))
-    <a href="{{route('investor.createModifier.showForm', ['type' => 'breakEven', 'signal' => $signal->id])}}" class="btn btn-secondary shadow btn-icon-split btn-lg type-button">
+    <a href="{{route('investor.createModifier.showForm', ['type' => 'breakEven', 'signal' => $signal->id])}}" class="btn btn-{{ session('breakEven') ? 'primary' : 'secondary' }} shadow btn-icon-split btn-lg type-button">
     @else
-    <a href="{{route('investor.createModifier.showForm', ['type' => 'breakEven'])}}" class="btn btn-secondary shadow btn-icon-split btn-lg type-button">
+    <a href="{{route('investor.createModifier.showForm', ['type' => 'breakEven'])}}" class="btn btn-{{ session('breakEven') ? 'primary' : 'secondary' }} shadow btn-icon-split btn-lg type-button">
     @endif
       <span class="icon text-white-50">
         <i class="fas fa-balance-scale"></i>
@@ -135,9 +135,9 @@
     </a>
 
     @if (isset($signal))
-    <a href="{{route('investor.createModifier.showForm', ['type' => 'closeAll', 'signal' => $signal->id])}}" class="btn btn-secondary shadow btn-icon-split btn-lg type-button">
+    <a href="{{route('investor.createModifier.showForm', ['type' => 'closeAll', 'signal' => $signal->id])}}" class="btn btn-{{ session('closeAll') ? 'primary' : 'secondary' }} shadow btn-icon-split btn-lg type-button">
     @else
-    <a href="{{route('investor.createModifier.showForm', ['type' => 'closeAll'])}}" class="btn btn-secondary shadow btn-icon-split btn-lg type-button">
+    <a href="{{route('investor.createModifier.showForm', ['type' => 'closeAll'])}}" class="btn btn-{{ session('closeAll') ? 'primary' : 'secondary' }} shadow btn-icon-split btn-lg type-button">
     @endif
       <span class="icon text-white-50">
         <i class="fas fa-skull-crossbones"></i>
@@ -146,20 +146,19 @@
     </a>
 
     @if (isset($signal))
-    <a href="{{route('investor.createModifier.showForm', ['type' => 'cancel', 'signal' => $signal->id])}}" class="btn btn-secondary shadow btn-icon-split btn-lg type-button">
+    <a href="{{route('investor.createModifier.showForm', ['type' => 'cancel', 'signal' => $signal->id])}}" class="btn btn-{{ session('cancel') ? 'primary' : 'secondary' }} shadow btn-icon-split btn-lg type-button">
     @else
-    <a href="{{route('investor.createModifier.showForm', ['type' => 'cancel'])}}" class="btn btn-secondary shadow btn-icon-split btn-lg type-button">
+    <a href="{{route('investor.createModifier.showForm', ['type' => 'cancel'])}}" class="btn btn-{{ session('cancel') ? 'primary' : 'secondary' }} shadow btn-icon-split btn-lg type-button">
     @endif
       <span class="icon text-white-50">
         <i class="far fa-window-close"></i>
       </span>
       <span class="text">Cancelar Operación</span>
     </a>
-
     @if (isset($signal))
-    <a href="{{route('investor.createModifier.showForm', ['type' => 'moveStopLoss', 'signal' => $signal->id])}}" class="btn btn-secondary shadow btn-icon-split btn-lg type-button">
+    <a href="{{route('investor.createModifier.showForm', ['type' => 'moveStopLoss', 'signal' => $signal->id])}}" class="btn btn-{{ session('moveStopLoss') ? 'primary' : 'secondary' }} shadow btn-icon-split btn-lg type-button">
     @else
-    <a href="{{route('investor.createModifier.showForm', ['type' => 'moveStopLoss'])}}" class="btn btn-secondary shadow btn-icon-split btn-lg type-button">
+    <a href="{{route('investor.createModifier.showForm', ['type' => 'moveStopLoss'])}}" class="btn btn-{{ session('moveStopLoss') ? 'primary' : 'secondary' }} shadow btn-icon-split btn-lg type-button">
     @endif
       <span class="icon text-white-50">
         <i class="fas fa-sliders-h"></i>
