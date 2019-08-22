@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->boolean('validated')->default(false);
             $table->string('oandaId')->nullable();
             $table->string('oandaToken')->nullable();
-           
             
             $table->rememberToken();
             $table->timestamps();
