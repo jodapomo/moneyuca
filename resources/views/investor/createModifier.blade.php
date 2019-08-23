@@ -39,7 +39,7 @@
       margin: 10px;
       transition: all 200ms ease-in-out;
     }
-    
+
     .type-button:hover {
       box-shadow: 0 .15rem 0.75rem 0 rgba(37, 38, 44, 0.24)!important
     }
@@ -228,7 +228,7 @@
               <div class="operation">
                 <div class="type-pair">
                   <div class="type">{{$operation->type}}</div>
-                  <div class="currency-pair">{{$operation->currency_pair}}</div>  
+                  <div class="currency-pair">{{$operation->currency_pair}}</div>
                 </div>
                 <div class="operation-data">
                   <div class="data-box">
@@ -345,7 +345,7 @@
               <div class="operation">
                 <div class="type-pair">
                   <div class="type">{{$operation->type}}</div>
-                  <div class="currency-pair">{{$operation->currency_pair}}</div>  
+                  <div class="currency-pair">{{$operation->currency_pair}}</div>
                 </div>
                 <div class="operation-data">
                   <div class="data-box">
@@ -419,7 +419,7 @@
     @csrf
       @if ( ($operations = session('operations')) && session('operations')->isNotEmpty())
         <div class="form-group col-md-4">
-          <label for="inputPassword4">Precio</label>
+          <label for="inputPassword4">Nuevo stop Loss</label>
           <input type="number" class="form-control" name="price" min="0" step="any" value="{{ old('price') }}">
           @error('price')
             <div  class="invalid-feedback" style="display:block" role="alert">
@@ -440,7 +440,7 @@
               <div class="operation">
                 <div class="type-pair">
                   <div class="type">{{$operation->type}}</div>
-                  <div class="currency-pair">{{$operation->currency_pair}}</div>  
+                  <div class="currency-pair">{{$operation->currency_pair}}</div>
                 </div>
                 <div class="operation-data">
                   <div class="data-box">
